@@ -1,168 +1,155 @@
 <!DOCTYPE html>
-<html <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>女神 400 速解</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>女神 400 速解</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    input[type="radio"] + label {
+      border: 1px solid #3b82f6;
+      border-radius: 0.25rem;
+      color: #3b82f6;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.75rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    input[type="radio"]:checked + label {
+      color: #ffffff;
+      background-color: #3b82f6;
+    }
+
+    @media (min-width: 768px) {
+      input[type="radio"] + label {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+      }
+    }
+  </style>
 </head>
 
-<body id='body' class='flex justify-center'>
-    <div class="w-3/4 mt-4">
-        <!-- banner -->
-        <div class="text-xl font-bold md:my-2 mb-2">
-            女神 400 速解小工具
-        </div>
+<body class='flex justify-center'>
+  <main class="w-3/4 mt-4">
+    <!-- banner -->
+    <h1 class="text-xl font-bold md:my-2 mb-2">女神 400 速解小工具</h1>
 
-        <!-- content -->
-        <div class="w-full p-4 border rounded-lg mb-2">
-            <div id="output" class="md:h-48 h-36 md:text-4xl text-lg flex justify-center items-center shadow border-b mb-6"></div>
-            <div class="w-full">
+    <!-- content -->
+    <div class="w-full p-4 border rounded-lg mb-2">
+      <div id="output" class="md:h-48 h-36 md:text-4xl text-lg flex justify-center items-center shadow border-b mb-6">
+      </div>
+      <div class="w-full">
 
-                <div class="flex flex-col md:mb-6 mb-2">
-                    <div class="flex flex-row mb-8">
-                        <p class="md:w-1/2 w-20 flex justify-center items-center md:text-4xl text-lg">平台狀態</p>
-                        <div class="text-gray-500 flex-1 pl-2">
-                            <div class="flex md:flex-row flex-col">
-                                <p class="md:px-2 px-0 w-8 font-bold text-lg">0:</p>
-                                <p class="md:text-lg text-sm">No platforms are correct</p>
-                            </div>
-                            <div class="flex md:flex-row flex-col">
-                                <p class="md:px-2 px-0 w-8 font-bold text-lg">1:</p>
-                                <p class="md:text-lg text-sm">1 platform is correct</p>
-                            </div>
-                            <div class="flex md:flex-row flex-col">
-                                <p class="md:px-2 px-0 w-8 font-bold text-lg">2:</p>
-                                <p class="md:text-lg text-sm">2 platforms are correct</p>
-                            </div>
-                        </div> 
-                    </div>
-                    <!-- empty Group -->
-                    <fieldset class="flex flex-row mb-8">
-                        <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">全空</p>
-                        <div class="flex flex-1">
-                            <div>
-                                <input hidden type="radio" id="empty0" name="empty" value="0" />
-                                <label name="emptylabel" for="empty0" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    0
-                                </label>
-                            </div>
-    
-                            <div class="md:mx-8 mx-4">
-                                <input hidden type="radio" id="empty1" name="empty" value="1" />
-                                <label name="emptylabel" for="empty1" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    1
-                                </label>
-                            </div>
-    
-                            <div>
-                                <input hidden type="radio" id="empty2" name="empty" value="2" />
-                                <label name="emptylabel" for="empty2" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    2
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <!-- left Group -->
-                    <fieldset class="flex flex-row mb-8">
-                        <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">隊長站左</p>
-                        <div class="flex flex-1">
-                            <div>
-                                <input hidden type="radio" id="left0" name="left" value="0" />
-                                <label name="leftlabel" for="left0" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    0
-                                </label>
-                            </div>
-    
-                            <div class="md:mx-8 mx-4">
-                                <input hidden type="radio" id="left1" name="left" value="1" />
-                                <label name="leftlabel" for="left1" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    1
-                                </label>
-                            </div>
-    
-                            <div>
-                                <input hidden type="radio" id="left2" name="left" value="2" />
-                                <label name="leftlabel" for="left2" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    2
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <!-- center Group -->
-                    <fieldset class="flex flex-row mb-8">
-                        <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">隊長站中</p>
-                        <div class="flex flex-1">
-                            <div>
-                                <input hidden type="radio" id="center0" name="center" value="0" />
-                                <label name="centerlabel" for="center0" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    0
-                                </label>
-                            </div>
-    
-                            <div class="md:mx-8 mx-4">
-                                <input hidden type="radio" id="center1" name="center" value="1" />
-                                <label name="centerlabel" for="center1" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    1
-                                </label>
-                            </div>
-    
-                            <div>
-                                <input hidden type="radio" id="center2" name="center" value="2" />
-                                <label name="centerlabel" for="center2" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    2
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <!-- right Group -->
-                    <fieldset class="flex flex-row">
-                        <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">隊長站右</p>
-                        <div class="flex flex-1">
-                            <div>
-                                <input hidden type="radio" id="right0" name="right" value="0" />
-                                <label name="rightlabel" for="right0" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    0
-                                </label>
-                            </div>
-    
-                            <div class="md:mx-8 mx-4">
-                                <input hidden type="radio" id="right1" name="right" value="1" />
-                                <label name="rightlabel" for="right1" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    1
-                                </label>
-                            </div>
-    
-                            <div>
-                                <input hidden type="radio" id="right2" name="right" value="2" />
-                                <label name="rightlabel" for="right2" onclick="callback(this)"
-                                    class="md:text-4xl text-xl bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    2
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
+        <div class="flex flex-col md:mb-6 mb-2">
+          <div class="flex flex-row mb-8">
+            <p class="md:w-1/2 w-20 flex justify-center items-center md:text-4xl text-lg">平台狀態</p>
+            <div class="text-gray-500 flex-1 pl-2">
+              <div class="flex md:flex-row flex-col">
+                <p class="md:text-lg text-sm"><span class="px-2 w-8 font-bold text-lg">0:</span>No platforms are correct
+                </p>
+              </div>
+              <div class="flex md:flex-row flex-col">
+                <p class="md:text-lg text-sm"><span class="px-2 w-8 font-bold text-lg">1:</span>1 platform is correct
+                </p>
+              </div>
+              <div class="flex md:flex-row flex-col">
+                <p class="md:text-lg text-sm"><span class="px-2 w-8 font-bold text-lg">2:</span>2 platforms are correct
+                </p>
+              </div>
             </div>
-        </div>
-    </div>
+          </div>
+          <!-- empty Group -->
+          <fieldset class="flex flex-row mb-8">
+            <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">全空</p>
+            <div class="flex flex-1">
+              <div>
+                <input hidden type="radio" id="empty0" name="empty" value="0" />
+                <label name="emptylabel" for="empty0">0</label>
+              </div>
 
-    <!-- <script src="/src/js/main.js"></script> -->
-    <script src="/tower-of-goddess/src/js/main.js"></script>
+              <div class="md:mx-8 mx-4">
+                <input hidden type="radio" id="empty1" name="empty" value="1" />
+                <label name="emptylabel" for="empty1">1</label>
+              </div>
+
+              <div>
+                <input hidden type="radio" id="empty2" name="empty" value="2" />
+                <label name="emptylabel" for="empty2">2</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- left Group -->
+          <fieldset class="flex flex-row mb-8">
+            <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">隊長站左</p>
+            <div class="flex flex-1">
+              <div>
+                <input hidden type="radio" id="left0" name="left" value="0" />
+                <label name="leftlabel" for="left0">0</label>
+              </div>
+
+              <div class="md:mx-8 mx-4">
+                <input hidden type="radio" id="left1" name="left" value="1" />
+                <label name="leftlabel" for="left1">1</label>
+              </div>
+
+              <div>
+                <input hidden type="radio" id="left2" name="left" value="2" />
+                <label name="leftlabel" for="left2">2</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- center Group -->
+          <fieldset class="flex flex-row mb-8">
+            <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">隊長站中</p>
+            <div class="flex flex-1">
+              <div>
+                <input hidden type="radio" id="center0" name="center" value="0" />
+                <label name="centerlabel" for="center0">0</label>
+              </div>
+
+              <div class="md:mx-8 mx-4">
+                <input hidden type="radio" id="center1" name="center" value="1" />
+                <label name="centerlabel" for="center1">1</label>
+              </div>
+
+              <div>
+                <input hidden type="radio" id="center2" name="center" value="2" />
+                <label name="centerlabel" for="center2">2</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- right Group -->
+          <fieldset class="flex flex-row">
+            <p class="md:text-4xl text-lg text-center mr-2 md:w-1/2 w-20">隊長站右</p>
+            <div class="flex flex-1">
+              <div>
+                <input hidden type="radio" id="right0" name="right" value="0" />
+                <label name="rightlabel" for="right0">0</label>
+              </div>
+
+              <div class="md:mx-8 mx-4">
+                <input hidden type="radio" id="right1" name="right" value="1" />
+                <label name="rightlabel" for="right1">1</label>
+              </div>
+
+              <div>
+                <input hidden type="radio" id="right2" name="right" value="2" />
+                <label name="rightlabel" for="right2">2</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
 </body>
 
 </html>
