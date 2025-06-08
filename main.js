@@ -1,4 +1,4 @@
-const MAPPING = Object.freeze({
+const ANSWERS = Object.freeze({
   '0011': '211',
   '0101': '121',
   '0110': '112',
@@ -17,21 +17,34 @@ const MAPPING = Object.freeze({
 });
 
 const calculate = () => {
-  const emptyValue = document.querySelector('input[name="empty"]:checked')?.value;
-  const leftValue = document.querySelector('input[name="left"]:checked')?.value;
-  const centerValue = document.querySelector('input[name="center"]:checked')?.value;
-  const rightValue = document.querySelector('input[name="right"]:checked')?.value;
+  const empty = document.querySelector('input[name="empty"]:checked')?.value ?? '.';
+  const left = document.querySelector('input[name="left"]:checked')?.value ?? '.';
+  const center = document.querySelector('input[name="center"]:checked')?.value ?? '.';
+  const right = document.querySelector('input[name="right"]:checked')?.value ?? '.';
 
-  const group = [emptyValue, leftValue, centerValue, rightValue];
-  if (group.filter(Boolean).length < group.length) {
-    return;
+  const pattern = [empty, left, center, right].join('');
+  let matchedCount = 0;
+  let matchedAns = null;
+  for (const [k, v] of Object.entries(ANSWERS)) {
+    const re = new RegExp(`^${pattern}$`);
+    if(re.test(k)) {
+      matchedCount++;
+      if(matchedCount === 1) {
+        matchedAns = v;
+      } else {
+        matchedAns = null;
+        break;
+      }
+    }
   }
+
   const outputEl = document.querySelector('#output');
   if(outputEl) {
-    outputEl.textContent = MAPPING[group.join('')] ?? '此組合不存在，請重新確認。';
+    outputEl.textContent = matchedAns ?? '此組合不存在，請重新確認。';
   }
 }
 
 for (const inputEl of document.querySelectorAll('input')) {
+  inputEl.checked = false;
   inputEl.onchange = calculate;
 }
